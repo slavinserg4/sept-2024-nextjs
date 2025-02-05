@@ -9,7 +9,7 @@ type userProps = {
 const Page:FC<userProps> = async ({searchParams}) => {
     const {data}=await searchParams;
     let user=null
-    if(data==="string"){
+    if(typeof data==="string"){
         user = JSON.parse(data) as IUser
         console.log(user)
     }
