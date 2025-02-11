@@ -1,16 +1,14 @@
 'use server'
 
-
+type FormPropsType = {
+    brand: string;
+    price: number;
+    year: number;
+};
 import {createCar} from "@/services/api.services";
-import {carValidator} from "@/validators/car.validator";
-export const createNewCar = async (formData:FormData) =>{
-    const brand = formData.get("brand") as string;
-    const price = Number(formData.get("price"));
-    const year = Number(formData.get("year"));
-    const {error} = carValidator.validate({ brand, price, year });
-    if(error){
-        console.log(error)
-    }
+export const createNewCar = async (formData:FormPropsType) =>{
 
-    await createCar({brand, price, year});
+
+
+    await createCar(formData);
 }

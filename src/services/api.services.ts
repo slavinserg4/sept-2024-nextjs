@@ -8,8 +8,7 @@ type createCarType = {
 
 
 export const getAllCars = async ():Promise<ICar[]> => {
-    let cars = await fetch('http://owu.linkpc.net/carsAPI/v1/cars').then(res => res.json());
-    return cars;
+    return await fetch('http://owu.linkpc.net/carsAPI/v1/cars').then(res => res.json()) as ICar[];
 }
 export const createCar = async ({ brand, price, year }: createCarType): Promise<ICar> => {
     const response = await fetch("http://owu.linkpc.net/carsAPI/v1/cars", {
